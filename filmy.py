@@ -41,11 +41,11 @@ biblioteka = [Movie_list] + [Serial_list]
 print("Biblioteka filmów")
 print(biblioteka)
 def get_movies():
-    by_tytul = sorted(biblioteka, key=self.tytul)
+    by_tytul = sorted(biblioteka, key=tytul)
     if type(object) == "Movie":
         print("to jest film")
 def get_series():
-    by_tytul = sorted(biblioteka, key=self.tytul)
+    by_tytul = sorted(biblioteka, key=tytul)
     if type(object) == "Serial":
         print("to jest serial")
 def search(tytul):
@@ -66,7 +66,7 @@ ilosc = int(input("Podaj interesującą Cię liczbę TopTitles: "))
 def top_titles():
     by_liczba_odtworzen = sorted(biblioteka, key=lambda liczba_odtworzen: liczba_odtworzen)
     licznik = 0
-    for element in biblioteka:
+    for element in by_liczba_odtworzen:
         print(element)
         licznik += 1
         if licznik > ilosc:
