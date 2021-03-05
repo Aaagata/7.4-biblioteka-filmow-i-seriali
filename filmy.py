@@ -25,7 +25,7 @@ class Serial(Movie):
         self.numer_odcinka = numer_odcinka
         self.numer_sezonu = numer_sezonu
     def __str__(self):
-        return f"{self.tytul} {numer_sezonu}{numer_odcinka}"   
+        return f"{self.tytul} {self.numer_sezonu}{self.numer_odcinka}"   
     def __repr__(self):
         return f"tytul = {self.tytul} numer_sezonu = {self.numer_sezonu}, numer_odcinka = {self.numer_odcinka}" 
     def play(self, step = 1):
@@ -37,7 +37,7 @@ s4 = Serial(tytul="Ojciec Mateusz", rok="2019", gatunek="Kryminał", numer_odcin
 s5 = Serial(tytul="Lucyfer", rok="2017", gatunek="Fantastyczny", numer_odcinka="E02", numer_sezonu="S03", liczba_odtworzen="369258147")
 Serial_list = [s1, s2, s3, s4, s5]
 
-biblioteka = [Movie_list] + [Serial_list]
+biblioteka = Movie_list + Serial_list
 print("Biblioteka filmów")
 print(biblioteka)
 def get_movies():
@@ -58,18 +58,18 @@ def search(tytul):
 def generate_views():
     random_view = random.choice(biblioteka)
     random_number = random.randrange(1, 100)
-    print(random_view, random_number)
+    # print(random_view, random_number)
 def generate_views10():
     for _ in range(10):
         generate_views()
 ilosc = int(input("Podaj interesującą Cię liczbę TopTitles: "))
 def top_titles():
-    by_liczba_odtworzen = sorted(biblioteka, key=lambda liczba_odtworzen: liczba_odtworzen)
+    by_liczba_odtworzen = sorted(biblioteka, key=lambda tytul: tytul.liczba_odtworzen, reverse=True)
     licznik = 0
     for element in by_liczba_odtworzen:
         print(element)
         licznik += 1
-        if licznik > ilosc:
-            break
+        if licznik >= ilosc:
+            return
 generate_views10()
 top_titles()
